@@ -4,8 +4,15 @@
 
 ![macOS 12+](https://img.shields.io/badge/macOS-12%2B-blue) ![MIT License](https://img.shields.io/badge/license-MIT-green) ![Swift](https://img.shields.io/badge/Swift-5.7-orange)
 
-<!-- TODO: Add screenshot -->
-<!-- ![Screenshot](screenshot.png) -->
+![Screenshot](screenshot.png)
+
+---
+
+## Why FoldBar? / 为什么需要 FoldBar？
+
+MacBook Pro's notch hides menu bar icons when there are too many of them. FoldBar lets you fold away the icons you don't need, keeping your menu bar clean and usable.
+
+MacBook Pro 的刘海屏会遮挡过多的菜单栏图标，导致部分图标无法显示。FoldBar 帮你折叠不常用的图标，让菜单栏保持整洁可用。
 
 ---
 
@@ -16,6 +23,7 @@
 - **137 lines of code**, single file, zero dependencies — 137 行代码，单文件，零依赖
 - **No permissions required** — 无需任何系统权限
 - **Launch at login** support — 支持开机自启
+- **Notch-friendly** — perfect for MacBook Pro with notch — 完美解决刘海屏图标遮挡问题
 
 ---
 
