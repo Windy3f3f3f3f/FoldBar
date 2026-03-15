@@ -119,9 +119,12 @@ class StatusBarController {
 struct PrefsView: View {
     @AppStorage("autoHide") private var autoHide = false
     @AppStorage("autoHideDelay") private var delay = 10.0
+    @State private var launchAtLogin = LaunchAgent.isEnabled
 
     var body: some View {
         Form {
+            Toggle("开机自启动", isOn: $launchAtLogin)
+                .onChange(of: launchAtLogin) { LaunchAgent.setEnabled($0) }
             Toggle("展开后自动折叠", isOn: $autoHide)
             if autoHide {
                 HStack {
@@ -132,6 +135,45 @@ struct PrefsView: View {
             }
             Text("⌘+拖拽图标到 ┃ 左边即可隐藏\n点击 ◀/▶ 切换折叠/展开")
                 .font(.caption).foregroundColor(.secondary)
-        }.frame(width: 300, height: 160).padding()
+        }.frame(width: 300, height: 180).padding()
+    }
+}
+
+// MARK: - Launch Agent
+
+enum LaunchAgent {
+    private static var plistURL: URL {
+        FileManager.default.homeDirectoryForCurrentUser
+            .appendingPathComponent("Library/LaunchAgents/com.foldbar.app.plist")
+    }
+
+    static var isEnabled: Bool {
+        FileManager.default.fileExists(atPath: plistURL.path)
+    }
+
+    static func setEnabled(_ enabled: Bool) {
+        if enabled {
+            let appPath = Bundle.main.bundlePath
+            let plist = """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <dict>
+                <key>Label</key>
+                <string>com.foldbar.app</string>
+                <key>ProgramArguments</key>
+                <array>
+                    <string>/usr/bin/open</string>
+                    <string>\(appPath)</string>
+                </array>
+                <key>RunAtLoad</key>
+                <true/>
+            </dict>
+            </plist>
+            """
+            try? plist.write(to: plistURL, atomically: true, encoding: .utf8)
+        } else {
+            try? FileManager.default.removeItem(at: plistURL)
+        }
     }
 }
