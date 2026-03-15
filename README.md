@@ -1,6 +1,6 @@
 # FoldBar
 
-**Hide menu bar icons with one click. | 一键折叠菜单栏图标。**
+**A lightweight macOS menu bar manager. Hide icons with one click. | 轻量级 macOS 菜单栏管理工具，一键折叠图标。**
 
 ![macOS 12+](https://img.shields.io/badge/macOS-12%2B-blue) ![MIT License](https://img.shields.io/badge/license-MIT-green) ![Swift](https://img.shields.io/badge/Swift-5.7-orange)
 
