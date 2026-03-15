@@ -21,7 +21,7 @@
 
 ## Install / 安装
 
-### **[>>> Download FoldBar.app <<<](https://github.com/Zeus233/FoldBar/releases/latest)**
+### **[>>> Download FoldBar.app <<<](https://github.com/Windy3f3f3f3f/FoldBar/releases/latest)**
 
 > **下载后直接拖入 Applications 文件夹即可使用，无需其他操作。**
 >
@@ -53,7 +53,7 @@
 Requires Swift 5.7+ and macOS 12+.
 
 ```bash
-git clone https://github.com/Zeus233/FoldBar.git
+git clone https://github.com/Windy3f3f3f3f/FoldBar.git
 cd FoldBar
 chmod +x build.sh
 ./build.sh
